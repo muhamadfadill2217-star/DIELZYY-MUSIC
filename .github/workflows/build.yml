@@ -21,6 +21,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Fix Gradle Wrapper
+        run: |
+          mkdir -p gradle/wrapper
+          cd gradle/wrapper
+          curl -O https://raw.githubusercontent.com/gradle/gradle/v8.5.0/gradle/wrapper/gradle-wrapper.jar
+
       - name: Create local.properties
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
